@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
     public enum Stage
@@ -16,24 +17,13 @@ public class FingerGun : MonoBehaviour
 
     public Stage CurrentStage = Stage.BulletSelection;
 
-    private int[]BulletSelection;
+    private int[]BulletSelection = new int [5] {0,0,0,0,0};
+
+    private int Shotsleft = 2;
+    private bool shot = false;
 
     void Start()
-    {
-        /*
-        if (Physics.Raycast(PlayerCamera.transform.position, PlayerCamera.transform.forward, out RaycastHit hit))
-        {
-            if (hit.transform.gameObject.CompareTag("Wall"))
-            {
-                Debug.Log("This is wall");
-            }else
-            {
-                Debug.Log(hit);
-            }
-        }*/
-
-        
-        
+    {    
     }
 
     void Update()
@@ -41,15 +31,29 @@ public class FingerGun : MonoBehaviour
         switch (CurrentStage)
         {
             case Stage.BulletSelection:
-
+            shot = false;
+            //changing enum
+            if (Input.GetKeyDown(KeyCode.Return))
+                {
+                    CurrentStage = Stage.Aiming;
+                }
+                BulletSelect();
             break;
 
             case Stage.Aiming:
-
+            //changing enum
+            if (shot)
+                {
+                    CurrentStage = Stage.MapMode;
+                }
             break;
 
             case Stage.MapMode:
-
+            //changing enum
+                if (Input.GetKeyDown(KeyCode.Tab))
+                {
+                    CurrentStage = Stage.BulletSelection;
+                }
             break;
         }
     }
@@ -62,13 +66,22 @@ public class FingerGun : MonoBehaviour
                 
                 if (Input.GetKeyDown(KeyCode.Keypad1))
                 {
-                    BulletSelection[BulletSelection.Length] = 1;
+                    for (int i = 0; i < BulletSelection.Length; i++)
+                    {
+                        BulletSelection[i] = 1;
+                    }
                 }else if (Input.GetKeyDown(KeyCode.Keypad2))
                 {
-                    BulletSelection[BulletSelection.Length] = 2;
+                    for (int i = 0; i < BulletSelection.Length; i++)
+                    {
+                        BulletSelection[i] = 2;
+                    }
                 }else if (Input.GetKeyDown(KeyCode.Keypad3))
                 {
-                    BulletSelection[BulletSelection.Length] = 3;    
+                    for (int i = 0; i < BulletSelection.Length; i++)
+                    {
+                        BulletSelection[i] = 3;
+                    }    
                 }
                 
                 
@@ -76,6 +89,8 @@ public class FingerGun : MonoBehaviour
 
     public void Shoot()
     {
+        Shotsleft--;
+        shot = true;
         if (Physics.Raycast(PlayerCamera.transform.position, PlayerCamera.transform.forward, out RaycastHit hit))
         {
             Debug.DrawLine(PlayerCamera.transform.position, hit.point, Color.red, 15);
@@ -96,5 +111,25 @@ public class FingerGun : MonoBehaviour
     {
         //ricochet logic on wall hit
         //
+    }
+
+    void Pierce ()
+    {
+        
+    }
+
+    void Splitter()
+    {
+        
+    }
+
+    void Explosion ()
+    {
+        
+    }
+
+    void StickyNade()
+    {
+        
     }
 }
