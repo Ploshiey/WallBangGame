@@ -6,7 +6,7 @@ using UnityEngine;
     {
         BulletSelection,
         Aiming,
-        Reload
+        MapMode
     }
 
 public class FingerGun : MonoBehaviour
@@ -16,7 +16,7 @@ public class FingerGun : MonoBehaviour
 
     public Stage CurrentStage = Stage.BulletSelection;
 
-    private int[]BulletSelection = {0,0,0};
+    private int[]BulletSelection;
 
     void Start()
     {
@@ -32,36 +32,49 @@ public class FingerGun : MonoBehaviour
             }
         }*/
 
-        Shoot();
+        
         
     }
 
     void Update()
     {
+        switch (CurrentStage)
+        {
+            case Stage.BulletSelection:
+
+            break;
+
+            case Stage.Aiming:
+
+            break;
+
+            case Stage.MapMode:
+
+            break;
+        }
     }
 
-    void Reload ()
+    void BulletSelect()
     {
         //arm to side anim
                 
                 //bullet selection
-                for (int i = 0; i < 3; i++)
-                {
+                
                 if (Input.GetKeyDown(KeyCode.Keypad1))
                 {
-                    BulletSelection[i] = 1;
+                    BulletSelection[BulletSelection.Length] = 1;
                 }else if (Input.GetKeyDown(KeyCode.Keypad2))
                 {
-                    BulletSelection[i] = 2;
+                    BulletSelection[BulletSelection.Length] = 2;
                 }else if (Input.GetKeyDown(KeyCode.Keypad3))
                 {
-                    BulletSelection[i] = 3;    
+                    BulletSelection[BulletSelection.Length] = 3;    
                 }
-                }   
+                
                 
     }
 
-    void Shoot()
+    public void Shoot()
     {
         if (Physics.Raycast(PlayerCamera.transform.position, PlayerCamera.transform.forward, out RaycastHit hit))
         {
