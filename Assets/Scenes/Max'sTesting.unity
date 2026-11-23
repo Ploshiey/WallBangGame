@@ -679,7 +679,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1251315698
 RectTransform:
   m_ObjectHideFlags: 0
@@ -943,9 +943,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f51ddf36bbf8f0849b7d63c86a226772, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gun: {fileID: 0}
   mainCam: {fileID: 898618769}
   maxClamp: 26
   speed: 1
+  zoom_speed: 2
+  speed_x: 200
+  scroll_limit_x: 5
+  scroll_limit_z: 5
 --- !u!114 &1858336447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -959,6 +964,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gun: {fileID: 0}
+  HUDPanel: {fileID: 0}
+  MapPanel: {fileID: 0}
 --- !u!4 &1858336448
 Transform:
   m_ObjectHideFlags: 0
@@ -992,7 +999,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1886001253
 RectTransform:
   m_ObjectHideFlags: 0
