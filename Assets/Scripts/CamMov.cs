@@ -38,7 +38,7 @@ public class CamMov : MonoBehaviour
         rotation.y = Mathf.Clamp(rotation.y, -90, 90);
         rotation.x += -Input.GetAxis("Mouse Y");
         rotation.x = Mathf.Clamp(rotation.x, -90, 90);
-        Debug.Log(rotation);
+        //Debug.Log(rotation);
         mainCam.transform.eulerAngles = (Vector2)rotation * speed;
     }
 
