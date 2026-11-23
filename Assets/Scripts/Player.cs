@@ -5,6 +5,7 @@ public class Player : MonoBehaviour
     [SerializeField] private FingerGun gun;
     [SerializeField] private CamMov camMov;
     [SerializeField] private GameObject HUDPanel;
+    [SerializeField] private GameObject BulletSelectionPanel;
     [SerializeField] private GameObject PausePanel;
 
     // Start is called before the first frame update

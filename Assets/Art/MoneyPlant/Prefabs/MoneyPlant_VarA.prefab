@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 07843d06ef2dd7c4c8c2351f476d3d8c, type: 2}
+  - {fileID: 2100000, guid: 442871485ce1b9b4da9ed1f1cb2266e4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -99,4 +99,4 @@ MonoBehaviour:
   voxelizer: {fileID: 7200000, guid: 5fdfd9c0be0cd42fca24f981cc152dd4, type: 3}
   mesh: {fileID: 4884874280957891045, guid: 95eee37f81a742443b9a603911b2e3d2, type: 3}
   useUV: 1
-  texture: {fileID: 2800000, guid: 219e5de27f240364d820e269f2053f4a, type: 3}
+  texture: {fileID: 2800000, guid: 15a2bbbdf7cc80746b4fa064c27e71bc, type: 3}
