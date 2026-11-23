@@ -137,7 +137,7 @@ public class FingerGun : MonoBehaviour
         //only has to check last one as it fills up in order, i think
         if (BulletSelection[MaxSlots - 1] == BulletEffect.None)
         {
-            if (Input.GetKeyDown(KeyCode.Keypad1))
+            if (Input.GetKeyDown(KeyCode.Alpha1))
             {
                 for (int i = 0; i < BulletSelection.Length; i++)
                 {
@@ -148,7 +148,7 @@ public class FingerGun : MonoBehaviour
                     }
                 }
             }
-            else if (Input.GetKeyDown(KeyCode.Keypad2))
+            else if (Input.GetKeyDown(KeyCode.Alpha2))
             {
                 for (int i = 0; i < BulletSelection.Length; i++)
                 {
@@ -159,7 +159,7 @@ public class FingerGun : MonoBehaviour
                     }
                 }
             }
-            else if (Input.GetKeyDown(KeyCode.Keypad3))
+            else if (Input.GetKeyDown(KeyCode.Alpha3))
             {
                 for (int i = 0; i < BulletSelection.Length; i++)
                 {
@@ -170,7 +170,7 @@ public class FingerGun : MonoBehaviour
                     }
                 }
             }
-            else if (Input.GetKeyDown(KeyCode.Keypad4))
+            else if (Input.GetKeyDown(KeyCode.Alpha4))
             {
                 for (int i = 0; i < BulletSelection.Length; i++)
                 {
@@ -181,7 +181,7 @@ public class FingerGun : MonoBehaviour
                     }
                 }
             }
-            else if (Input.GetKeyDown(KeyCode.Keypad5))
+            else if (Input.GetKeyDown(KeyCode.Alpha5))
             {
                 for (int i = 0; i < BulletSelection.Length; i++)
                 {
