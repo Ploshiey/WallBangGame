@@ -1,70 +1,66 @@
 ﻿Shader "Custom/RenderFeature/KawaseBlur"
 {
-    Properties
-    {
-        _MainTex ("Texture", 2D) = "white" {}
-      //   _offset ("Offset", float) = 0.5
-    }
-
     SubShader
     {
-        Tags { "RenderType"="Opaque" }
+        Tags
+        {
+            "RenderType" = "Opaque"
+            "RenderPipeline" = "UniversalPipeline"
+        }
+
         LOD 100
+        ZTest Always
+        ZWrite Off
+        Cull Off
 
         Pass
         {
-            CGPROGRAM
-            #pragma vertex vert
-            #pragma fragment frag
-            // make fog work
-            #pragma multi_compile_fog
+            Name "KawaseBlur"
 
-            #include "UnityCG.cginc"
+            HLSLPROGRAM
+            #pragma vertex Vert
+            #pragma fragment Frag
+            // Blit.hlsl draws a procedural fullscreen triangle, which GLES2 cannot do.
+            #pragma exclude_renderers gles
 
-            struct appdata
-            {
-                float4 vertex : POSITION;
-                float2 uv : TEXCOORD0;
-            };
+            // Include order matters. Blit.hlsl uses TEXTURE2D_X, which is defined in
+            // TextureXR.hlsl — pulled in by URP's Core.hlsl, not by Common.hlsl.
+            // Including Blit.hlsl on its own fails with "unrecognized identifier
+            // 'TEXTURE2D_X'". This is the same order URP's own Bloom.shader uses.
+            #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Common.hlsl"
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+            // Provides Vert, Varyings, _BlitTexture, _BlitScaleBias, _BlitMipLevel
+            // and the global samplers (sampler_LinearClamp).
+            #include "Packages/com.unity.render-pipelines.core/Runtime/Utilities/Blit.hlsl"
 
-            struct v2f
-            {
-                float2 uv : TEXCOORD0;
-                UNITY_FOG_COORDS(1)
-                float4 vertex : SV_POSITION;
-            };
-
-            sampler2D _MainTex;
-            // sampler2D _CameraOpaqueTexture;
-            float4 _MainTex_TexelSize;
-            float4 _MainTex_ST;
-            
+            // Kawase ring offset, in texels. Set per-blit from KawaseBlur.cs.
             float _offset;
 
-            v2f vert (appdata v)
-            {
-                v2f o;
-                o.vertex = UnityObjectToClipPos(v.vertex);
-                o.uv = TRANSFORM_TEX(v.uv, _MainTex);
-                return o;
-            }
+            // xy = 1/width, 1/height of the source target. Set per-blit from
+            // KawaseBlur.cs: _BlitTexture is bound through a property block, so
+            // the automatic _TexelSize companion is not available here.
+            float4 _KawaseTexelSize;
 
-            fixed4 frag (v2f input) : SV_Target
+            half4 Frag(Varyings input) : SV_Target
             {
-                float2 res = _MainTex_TexelSize.xy;
+                UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(input);
+
+                float2 uv = input.texcoord;
+                float2 res = _KawaseTexelSize.xy;
                 float i = _offset;
-    
-                fixed4 col;                
-                col.rgb = tex2D( _MainTex, input.uv ).rgb;
-                col.rgb += tex2D( _MainTex, input.uv + float2( i, i ) * res ).rgb;
-                col.rgb += tex2D( _MainTex, input.uv + float2( i, -i ) * res ).rgb;
-                col.rgb += tex2D( _MainTex, input.uv + float2( -i, i ) * res ).rgb;
-                col.rgb += tex2D( _MainTex, input.uv + float2( -i, -i ) * res ).rgb;
-                col.rgb /= 5.0f;
-                
-                return col;
+
+                half3 col = SAMPLE_TEXTURE2D_X_LOD(_BlitTexture, sampler_LinearClamp, uv, _BlitMipLevel).rgb;
+                col += SAMPLE_TEXTURE2D_X_LOD(_BlitTexture, sampler_LinearClamp, uv + float2( i,  i) * res, _BlitMipLevel).rgb;
+                col += SAMPLE_TEXTURE2D_X_LOD(_BlitTexture, sampler_LinearClamp, uv + float2( i, -i) * res, _BlitMipLevel).rgb;
+                col += SAMPLE_TEXTURE2D_X_LOD(_BlitTexture, sampler_LinearClamp, uv + float2(-i,  i) * res, _BlitMipLevel).rgb;
+                col += SAMPLE_TEXTURE2D_X_LOD(_BlitTexture, sampler_LinearClamp, uv + float2(-i, -i) * res, _BlitMipLevel).rgb;
+                col /= 5.0h;
+
+                return half4(col, 1.0h);
             }
-            ENDCG
+            ENDHLSL
         }
     }
+
+    Fallback Off
 }
