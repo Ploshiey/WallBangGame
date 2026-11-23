@@ -33,14 +33,26 @@ public class CamMov : MonoBehaviour
         }
     }
 
+    public void ChangeToAim()
+    {
+        gun.CurrentStage = Stage.Aiming;
+        mainCam.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+    }
+
     void PlayerLook()
     {
         rotation.y += Input.GetAxis("Mouse X");
         rotation.y = Mathf.Clamp(rotation.y, -90, 90);
         rotation.x += -Input.GetAxis("Mouse Y");
         rotation.x = Mathf.Clamp(rotation.x, -90, 90);
-        Debug.Log(rotation);
         mainCam.transform.eulerAngles = (Vector2)rotation * speed;
+    }
+
+    public void ChangeToMap()
+    {
+        gun.CurrentStage = Stage.MapMode;
+        distance = 10;
+        mainCam.transform.position = focalPoint.position - mainCam.transform.forward * distance;
     }
 
     void MapLook()
