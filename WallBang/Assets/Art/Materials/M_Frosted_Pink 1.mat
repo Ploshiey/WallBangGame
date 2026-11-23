@@ -41,6 +41,6 @@ Material:
     - _UseThickness: 1
     - _ZWriteMode: 1
     m_Colors:
-    - _BaseColor: {r: 0.65882355, g: 1, b: 0.68867666, a: 1}
-    - _FresnelColor: {r: 1, g: 1, b: 1, a: 1}
+    - _BaseColor: {r: 0.65882355, g: 1, b: 1, a: 1}
+    - _FresnelColor: {r: 0.9022963, g: 1, b: 0, a: 1}
   m_BuildTextureStacks: []
