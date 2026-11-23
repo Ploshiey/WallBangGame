@@ -924,6 +924,7 @@ GameObject:
   - component: {fileID: 1858336448}
   - component: {fileID: 1858336447}
   - component: {fileID: 1858336446}
+  - component: {fileID: 1858336449}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -943,14 +944,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f51ddf36bbf8f0849b7d63c86a226772, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gun: {fileID: 0}
+  gun: {fileID: 1858336449}
   mainCam: {fileID: 898618769}
   maxClamp: 26
   speed: 1
-  zoom_speed: 2
-  speed_x: 200
-  scroll_limit_x: 5
-  scroll_limit_z: 5
+  focalPoint: {fileID: 1711646538}
 --- !u!114 &1858336447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -963,9 +961,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a602318ddfad004b80f84f32f3fd12d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gun: {fileID: 0}
-  HUDPanel: {fileID: 0}
-  MapPanel: {fileID: 0}
+  gun: {fileID: 1858336449}
+  HUDPanel: {fileID: 1251315697}
+  MapPanel: {fileID: 1886001252}
 --- !u!4 &1858336448
 Transform:
   m_ObjectHideFlags: 0
@@ -982,6 +980,20 @@ Transform:
   - {fileID: 898618770}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1858336449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858336445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99e979a0f3f186240aa90ed5e98f46c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerCamera: {fileID: 898618769}
+  CurrentStage: 1
 --- !u!1 &1886001252
 GameObject:
   m_ObjectHideFlags: 0
