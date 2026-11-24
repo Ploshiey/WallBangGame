@@ -451,9 +451,9 @@ public class FingerGun : MonoBehaviour
 
         void HitEnemy(Collider enemy, Vector3 point, Vector3 dir)
         {
-            if (!IsEnemy(enemy)) return;
+            //if (!IsEnemy(enemy)) return;
             player.score += 100;
-            { Destroy(enemy); }
+            Destroy(enemy);
         }
 
         void Explode(Vector3 centre)
