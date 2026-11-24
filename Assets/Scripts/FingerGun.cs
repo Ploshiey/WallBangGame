@@ -47,6 +47,7 @@ public class FingerGun : MonoBehaviour
 {
     [SerializeField] private Camera PlayerCamera;
     [SerializeField] private Transform Muzzle; //spawn the visible bullet at fingertips
+    public CamMov camMov;
 
     public Stage CurrentStage = Stage.BulletSelection;
     //Loadout
@@ -101,6 +102,7 @@ public class FingerGun : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
                     CurrentStage = Stage.Aiming;
+                    camMov.ChangeToAim();
                 }
                 BulletSelect();
                 break;
@@ -110,6 +112,7 @@ public class FingerGun : MonoBehaviour
                 if (shot)
                 {
                     CurrentStage = Stage.MapMode;
+                    camMov.ChangeToMap();
 
                     //reset bullets 
                     for (int i = 0; i < BulletSelection.Length; i++)
@@ -125,6 +128,7 @@ public class FingerGun : MonoBehaviour
                 {
                     ClearLastShot(); // readying the next shot wipes the old trails
                     CurrentStage = Stage.BulletSelection;
+                    camMov.ChangeToBulletSelect();
                 }
                 break;
         }

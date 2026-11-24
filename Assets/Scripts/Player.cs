@@ -1,3 +1,4 @@
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -7,6 +8,8 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject HUDPanel;
     [SerializeField] private GameObject BulletSelectionPanel;
     [SerializeField] private GameObject PausePanel;
+
+    public int score;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +32,8 @@ public class Player : MonoBehaviour
         }
     }
 
+
+
     public void OnResume()
     {
         PausePanel.SetActive(false);
@@ -36,6 +41,16 @@ public class Player : MonoBehaviour
     }
 
     public void OnMainMenu()
+    {
+        SceneManager.LoadScene("Main Menu");
+    }
+
+    public void OnLevelSelect()
+    {
+
+    }
+
+    public void OnSettings()
     {
 
     }

@@ -4,6 +4,9 @@ public class CamMov : MonoBehaviour
 {
     public FingerGun gun;
     public Camera mainCam;
+    public Transform AimPos;
+    public Transform BulletSelectPos;
+    public Transform MapPos;
     public float maxClamp = 26.0f;
     public float speed;
     Vector3 rotation;
@@ -36,23 +39,22 @@ public class CamMov : MonoBehaviour
     public void ChangeToAim()
     {
         gun.CurrentStage = Stage.Aiming;
-        mainCam.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+        mainCam.transform.SetPositionAndRotation(AimPos.position, AimPos.rotation);
     }
 
     void PlayerLook()
     {
         rotation.y += Input.GetAxis("Mouse X");
         rotation.y = Mathf.Clamp(rotation.y, -90, 90);
-        rotation.x += -Input.GetAxis("Mouse Y");
-        rotation.x = Mathf.Clamp(rotation.x, -90, 90);
         mainCam.transform.eulerAngles = (Vector2)rotation * speed;
     }
 
     public void ChangeToMap()
     {
         gun.CurrentStage = Stage.MapMode;
+        mainCam.transform.SetPositionAndRotation(MapPos.position, MapPos.rotation);
         distance = 10;
-        mainCam.transform.position = focalPoint.position - mainCam.transform.forward * distance;
+        MapLook();
     }
 
     void MapLook()
@@ -63,10 +65,15 @@ public class CamMov : MonoBehaviour
         mainCam.transform.LookAt(focalPoint);
         mainCam.transform.eulerAngles += new Vector3(-mouseY * speed, mouseX * speed, 0);
 
-        distance -= Input.GetAxis("Mouse ScrollWheel") / speed;
-        distance = Mathf.Clamp(distance, 0, 20);
+        distance -= Input.GetAxis("Mouse ScrollWheel") / (speed * 0.2f);
+        distance = Mathf.Clamp(distance, 0, 60);
 
         mainCam.transform.position = focalPoint.position - mainCam.transform.forward * distance;
         
+    }
+
+    public void ChangeToBulletSelect()
+    {
+        mainCam.transform.SetPositionAndRotation(BulletSelectPos.position, BulletSelectPos.rotation);
     }
 }
