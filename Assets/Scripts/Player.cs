@@ -1,5 +1,6 @@
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject HUDPanel;
     [SerializeField] private GameObject BulletSelectionPanel;
     [SerializeField] private GameObject PausePanel;
+    [SerializeField] private TextMeshProUGUI scoreText;
 
     public int score;
 
@@ -20,6 +22,17 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        scoreText.text = score.ToString();
+        if (score >= 300 && gun.activeBullets == 0)
+        {
+            SceneManager.LoadScene(2);
+        }
+
+        if (score <= 300 && gun.Shotsleft == 0 && gun.activeBullets == 0)
+        {
+            SceneManager.LoadScene(3);
+        }
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             PausePanel.SetActive(true);
@@ -42,12 +55,7 @@ public class Player : MonoBehaviour
 
     public void OnMainMenu()
     {
-        SceneManager.LoadScene("Main Menu");
-    }
-
-    public void OnLevelSelect()
-    {
-
+        SceneManager.LoadScene(0);
     }
 
     public void OnSettings()

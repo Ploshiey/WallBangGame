@@ -85,9 +85,9 @@ public class FingerGun : MonoBehaviour
     private const float Skin = 0.01f; //nudge bullet of surfaces so it dosent start inside
 
 
-    private int Shotsleft = 2;
+    public int Shotsleft = 2;
     private bool shot = false;
-    private int activeBullets = 0;
+    public int activeBullets = 0;
     private readonly List<GameObject> shotLeftovers = new List<GameObject>(); // trails + nades from the last shot
 
     public bool ShotInProgress => activeBullets > 0;
@@ -103,6 +103,7 @@ public class FingerGun : MonoBehaviour
                 {
                     CurrentStage = Stage.Aiming;
                     camMov.ChangeToAim();
+
                 }
                 BulletSelect();
                 break;
@@ -435,7 +436,8 @@ public class FingerGun : MonoBehaviour
 
         void HitEnemy(Collider enemy, Vector3 point, Vector3 dir)
         {
-
+            if (!IsEnemy(enemy)) return;
+            { Destroy(enemy); }
         }
 
         void Explode(Vector3 centre)
