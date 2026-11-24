@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     [SerializeField] private FingerGun gun;
     [SerializeField] private CamMov camMov;
     [SerializeField] private GameObject HUDPanel;
-    [SerializeField] private GameObject BulletSelectionPanel;
+    public GameObject BulletSelectionPanel;
     [SerializeField] private GameObject PausePanel;
     [SerializeField] private TextMeshProUGUI scoreText;
 
