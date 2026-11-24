@@ -4652,7 +4652,7 @@ GameObject:
   - component: {fileID: 521804919}
   m_Layer: 0
   m_Name: Map Barrier (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7793,7 +7793,7 @@ GameObject:
   - component: {fileID: 749752745}
   m_Layer: 0
   m_Name: Map Barrier (2)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9050,9 +9050,21 @@ PrefabInstance:
       objectReference: {fileID: 777053813}
     - target: {fileID: 8121509360522982872, guid: 90d5a7a5ae28c7c4cadb432c2f20c0f4,
         type: 3}
-      propertyPath: BulletVisualPrefab
+      propertyPath: ExplosionVfx
       value: 
       objectReference: {fileID: 1927087807714780907, guid: 477b2a3b7f4006345a55a67d3bb6d586,
+        type: 3}
+    - target: {fileID: 8121509360522982872, guid: 90d5a7a5ae28c7c4cadb432c2f20c0f4,
+        type: 3}
+      propertyPath: StickyPrefab
+      value: 
+      objectReference: {fileID: 2130926748019961545, guid: d747b7667348b8b4eada60d1df6a4b6b,
+        type: 3}
+    - target: {fileID: 8121509360522982872, guid: 90d5a7a5ae28c7c4cadb432c2f20c0f4,
+        type: 3}
+      propertyPath: BulletVisualPrefab
+      value: 
+      objectReference: {fileID: 2620093597878024880, guid: 2901ab3c260da5b4cae86cf889642052,
         type: 3}
     - target: {fileID: 8121509360522982872, guid: 90d5a7a5ae28c7c4cadb432c2f20c0f4,
         type: 3}
@@ -13638,7 +13650,7 @@ GameObject:
   - component: {fileID: 1637366421}
   m_Layer: 0
   m_Name: Map Barrier
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
