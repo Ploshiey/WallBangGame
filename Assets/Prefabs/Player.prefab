@@ -307,7 +307,7 @@ MonoBehaviour:
   MaxWallThickness: 3
   BulletVisualPrefab: {fileID: 3346424232796455469, guid: bc2714ae21d58a840b7537465426517a,
     type: 3}
-  BulletSpeed: 2
+  BulletSpeed: 10
   EnemyTag: Enemy
 --- !u!1 &9160543632428917948
 GameObject:
