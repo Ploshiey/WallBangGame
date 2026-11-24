@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject BulletSelectionPanel;
     [SerializeField] private GameObject PausePanel;
 
+    public int score;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +31,8 @@ public class Player : MonoBehaviour
             gun.Shoot();
         }
     }
+
+
 
     public void OnResume()
     {

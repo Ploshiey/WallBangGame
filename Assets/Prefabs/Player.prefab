@@ -254,6 +254,7 @@ MonoBehaviour:
   HUDPanel: {fileID: 0}
   BulletSelectionPanel: {fileID: 0}
   PausePanel: {fileID: 0}
+  score: 0
 --- !u!114 &9109377813212547343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,9 +269,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gun: {fileID: 8121509360522982872}
   mainCam: {fileID: 641255582475286186}
-  AimPos: {fileID: 0}
-  BulletSelectPos: {fileID: 0}
-  MapPos: {fileID: 0}
+  AimPos: {fileID: 4020911236348521498}
+  BulletSelectPos: {fileID: 1095106425074701351}
+  MapPos: {fileID: 2099138763043629560}
   maxClamp: 26
   speed: 1
   focalPoint: {fileID: 0}
