@@ -17,6 +17,8 @@ public class CamMov : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        ChangeToBulletSelect();
+        
     }
 
     // Update is called once per frame
@@ -28,7 +30,7 @@ public class CamMov : MonoBehaviour
         }
         else if (gun.CurrentStage == Stage.MapMode)
         {
-            MapLook();
+            //MapLook();
         }
         else if (gun.CurrentStage == Stage.BulletSelection)
         {
@@ -53,8 +55,8 @@ public class CamMov : MonoBehaviour
     {
         gun.CurrentStage = Stage.MapMode;
         mainCam.transform.SetPositionAndRotation(MapPos.position, MapPos.rotation);
-        distance = 10;
-        MapLook();
+        mainCam.orthographic = true;
+        mainCam.orthographicSize = 25;
     }
 
     void MapLook()
