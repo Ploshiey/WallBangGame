@@ -4,6 +4,9 @@ public class CamMov : MonoBehaviour
 {
     public FingerGun gun;
     public Camera mainCam;
+    public Transform AimPos;
+    public Transform BulletSelectPos;
+    public Transform MapPos;
     public float maxClamp = 26.0f;
     public float speed;
     Vector3 rotation;
@@ -36,7 +39,7 @@ public class CamMov : MonoBehaviour
     public void ChangeToAim()
     {
         gun.CurrentStage = Stage.Aiming;
-        mainCam.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+        mainCam.transform.SetPositionAndRotation(AimPos.position, AimPos.rotation);
     }
 
     void PlayerLook()
@@ -51,8 +54,9 @@ public class CamMov : MonoBehaviour
     public void ChangeToMap()
     {
         gun.CurrentStage = Stage.MapMode;
+        mainCam.transform.SetPositionAndRotation(MapPos.position, MapPos.rotation);
         distance = 10;
-        mainCam.transform.position = focalPoint.position - mainCam.transform.forward * distance;
+        MapLook();
     }
 
     void MapLook()
@@ -68,5 +72,10 @@ public class CamMov : MonoBehaviour
 
         mainCam.transform.position = focalPoint.position - mainCam.transform.forward * distance;
         
+    }
+
+    public void ChangeToBulletSelect()
+    {
+        mainCam.transform.SetPositionAndRotation(BulletSelectPos.position, BulletSelectPos.rotation);
     }
 }

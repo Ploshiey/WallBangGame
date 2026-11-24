@@ -1,3 +1,4 @@
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -36,6 +37,16 @@ public class Player : MonoBehaviour
     }
 
     public void OnMainMenu()
+    {
+        SceneManager.LoadScene("Main Menu");
+    }
+
+    public void OnLevelSelect()
+    {
+
+    }
+
+    public void OnSettings()
     {
 
     }
