@@ -49,6 +49,9 @@ public class FingerGun : MonoBehaviour
     [SerializeField] private Transform Muzzle; //spawn the visible bullet at fingertips
     public CamMov camMov;
 
+    public Player player;
+    public GameObject[] selector;
+
     public Stage CurrentStage = Stage.BulletSelection;
     //Loadout
     private BulletEffect[] BulletSelection = new BulletEffect[3] { BulletEffect.None, BulletEffect.None, BulletEffect.None };
@@ -103,6 +106,7 @@ public class FingerGun : MonoBehaviour
                 {
                     CurrentStage = Stage.Aiming;
                     camMov.ChangeToAim();
+                    player.BulletSelectionPanel.SetActive(false);
 
                 }
                 BulletSelect();
@@ -130,6 +134,12 @@ public class FingerGun : MonoBehaviour
                     ClearLastShot(); // readying the next shot wipes the old trails
                     CurrentStage = Stage.BulletSelection;
                     camMov.ChangeToBulletSelect();
+                    player.BulletSelectionPanel.SetActive(true);
+                    foreach (GameObject o in selector)
+                    {
+                        o.SetActive(false);
+                    }
+
                 }
                 break;
         }
@@ -149,6 +159,7 @@ public class FingerGun : MonoBehaviour
                     if (BulletSelection[i] == BulletEffect.None)
                     {
                         BulletSelection[i] = BulletEffect.Ricochet;
+                        selector[0].SetActive(true);
                         break;
                     }
                 }
@@ -160,6 +171,7 @@ public class FingerGun : MonoBehaviour
                     if (BulletSelection[i] == BulletEffect.None)
                     {
                         BulletSelection[i] = BulletEffect.Pierce;
+                        selector[1].SetActive(true);
                         break;
                     }
                 }
@@ -171,6 +183,7 @@ public class FingerGun : MonoBehaviour
                     if (BulletSelection[i] == BulletEffect.None)
                     {
                         BulletSelection[i] = BulletEffect.Splitter;
+                        selector[2].SetActive(true);
                         break;
                     }
                 }
@@ -182,6 +195,7 @@ public class FingerGun : MonoBehaviour
                     if (BulletSelection[i] == BulletEffect.None)
                     {
                         BulletSelection[i] = BulletEffect.Explosion;
+                        selector[3].SetActive(true);
                         break;
                     }
                 }
@@ -193,6 +207,7 @@ public class FingerGun : MonoBehaviour
                     if (BulletSelection[i] == BulletEffect.None)
                     {
                         BulletSelection[i] = BulletEffect.StickyNade;
+                        selector[4].SetActive(true);
                         break;
                     }
                 }
@@ -436,8 +451,9 @@ public class FingerGun : MonoBehaviour
 
         void HitEnemy(Collider enemy, Vector3 point, Vector3 dir)
         {
-            if (!IsEnemy(enemy)) return;
-            { Destroy(enemy); }
+            //if (!IsEnemy(enemy)) return;
+            player.score += 100;
+            Destroy(enemy);
         }
 
         void Explode(Vector3 centre)

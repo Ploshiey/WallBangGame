@@ -77,5 +77,6 @@ public class CamMov : MonoBehaviour
     public void ChangeToBulletSelect()
     {
         mainCam.transform.SetPositionAndRotation(BulletSelectPos.position, BulletSelectPos.rotation);
+        mainCam.orthographic = false;
     }
 }
