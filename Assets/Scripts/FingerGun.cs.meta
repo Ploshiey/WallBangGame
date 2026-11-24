@@ -3,7 +3,16 @@ guid: 99e979a0f3f186240aa90ed5e98f46c2
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - PlayerCamera: {instanceID: 0}
+  - Muzzle: {instanceID: 0}
+  - camMov: {instanceID: 0}
+  - ExplosionVfx: {fileID: 1927087807714780907, guid: 477b2a3b7f4006345a55a67d3bb6d586,
+      type: 3}
+  - StickyPrefab: {fileID: 2130926748019961545, guid: d747b7667348b8b4eada60d1df6a4b6b,
+      type: 3}
+  - BulletVisualPrefab: {fileID: 1927087807714780907, guid: 477b2a3b7f4006345a55a67d3bb6d586,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
