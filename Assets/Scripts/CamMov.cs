@@ -65,8 +65,8 @@ public class CamMov : MonoBehaviour
         mainCam.transform.LookAt(focalPoint);
         mainCam.transform.eulerAngles += new Vector3(-mouseY * speed, mouseX * speed, 0);
 
-        distance -= Input.GetAxis("Mouse ScrollWheel") / speed;
-        distance = Mathf.Clamp(distance, 0, 20);
+        distance -= Input.GetAxis("Mouse ScrollWheel") / (speed * 0.2f);
+        distance = Mathf.Clamp(distance, 0, 60);
 
         mainCam.transform.position = focalPoint.position - mainCam.transform.forward * distance;
         
