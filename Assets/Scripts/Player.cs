@@ -23,12 +23,12 @@ public class Player : MonoBehaviour
     void Update()
     {
         scoreText.text = score.ToString();
-        if (score >= 300 && gun.activeBullets == 0)
+        if (score >= 1000 && gun.activeBullets == 0)
         {
             SceneManager.LoadScene(2);
         }
 
-        if (score <= 300 && gun.Shotsleft == 0 && gun.activeBullets == 0)
+        if (score <= 1000 && gun.Shotsleft == 0 && gun.activeBullets == 0)
         {
             SceneManager.LoadScene(3);
         }
