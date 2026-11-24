@@ -8879,6 +8879,12 @@ PrefabInstance:
       objectReference: {fileID: 777053813}
     - target: {fileID: 8121509360522982872, guid: 90d5a7a5ae28c7c4cadb432c2f20c0f4,
         type: 3}
+      propertyPath: BulletVisualPrefab
+      value: 
+      objectReference: {fileID: 1927087807714780907, guid: 477b2a3b7f4006345a55a67d3bb6d586,
+        type: 3}
+    - target: {fileID: 8121509360522982872, guid: 90d5a7a5ae28c7c4cadb432c2f20c0f4,
+        type: 3}
       propertyPath: selector.Array.size
       value: 5
       objectReference: {fileID: 0}
