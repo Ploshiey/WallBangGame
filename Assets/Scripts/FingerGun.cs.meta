@@ -7,9 +7,10 @@ MonoImporter:
   - PlayerCamera: {instanceID: 0}
   - Muzzle: {instanceID: 0}
   - camMov: {instanceID: 0}
-  - ExplosionVfx: {fileID: 1927087807714780907, guid: 477b2a3b7f4006345a55a67d3bb6d586,
+  - player: {instanceID: 0}
+  - ExplosionVfx: {fileID: 8019794719605585918, guid: aeeab514598dc314d8bb5361ccbc7361,
       type: 3}
-  - StickyPrefab: {fileID: 2130926748019961545, guid: d747b7667348b8b4eada60d1df6a4b6b,
+  - StickyPrefab: {fileID: 1637572955491382868, guid: d84bcc4ed1006af45b502429dbb49984,
       type: 3}
   - BulletVisualPrefab: {fileID: 1927087807714780907, guid: 477b2a3b7f4006345a55a67d3bb6d586,
       type: 3}

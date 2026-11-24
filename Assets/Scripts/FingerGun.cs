@@ -289,9 +289,13 @@ public class FingerGun : MonoBehaviour
                     ignore = hit.collider;
                     continue;
                 }
+            else if (hit.collider.gameObject.tag == "Ally")
+            {
+                player.score -= 20;
+            }
 
-                //efects decide what comes into play
-                WallPlan plan = HitWall(s, hit, dir);
+            //efects decide what comes into play
+            WallPlan plan = HitWall(s, hit, dir);
 
                 if (plan.stick)
                 {
@@ -451,9 +455,9 @@ public class FingerGun : MonoBehaviour
 
         void HitEnemy(Collider enemy, Vector3 point, Vector3 dir)
         {
-            //if (!IsEnemy(enemy)) return;
+            if (!IsEnemy(enemy)) return;
             player.score += 100;
-            Destroy(enemy);
+            Destroy(enemy.gameObject);
         }
 
         void Explode(Vector3 centre)
