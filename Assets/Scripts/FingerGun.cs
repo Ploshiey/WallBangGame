@@ -289,9 +289,13 @@ public class FingerGun : MonoBehaviour
                     ignore = hit.collider;
                     continue;
                 }
+            else if (hit.collider.gameObject.tag == "Ally")
+            {
+                player.score -= 20;
+            }
 
-                //efects decide what comes into play
-                WallPlan plan = HitWall(s, hit, dir);
+            //efects decide what comes into play
+            WallPlan plan = HitWall(s, hit, dir);
 
                 if (plan.stick)
                 {
