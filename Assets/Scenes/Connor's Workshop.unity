@@ -1060,6 +1060,7 @@ MonoBehaviour:
   gun: {fileID: 1875632481}
   camMov: {fileID: 1875632482}
   HUDPanel: {fileID: 0}
+  BulletSelectionPanel: {fileID: 0}
   PausePanel: {fileID: 0}
 --- !u!4 &1875632484
 Transform:
